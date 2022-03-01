@@ -1,17 +1,42 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <br />
+  <Header :title="word" @clear="sil" />
+  <input ref="text" />
+  <br />
+  <h1>CLI Projects</h1>
+  <!-- <input type="text" ref="name" />
+  <input type="text" ref="password" />
+  <button @click="handleClick()">Click</button> -->
+  <br />
+  <Form />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from "./components/Header.vue";
+import Form from "./components/Form.vue";
 
 export default {
-  name: 'App',
+  name: "App",
+  data() {
+    return {
+      word: "Hello Vue3",
+    };
+  },
+  methods: {
+    handleClick() {
+      console.log(this.$refs.name.value);
+      console.log(this.$refs.password.value);
+    },
+    sil() {
+      this.$refs.text.value = "";
+    },
+  },
   components: {
-    HelloWorld
-  }
-}
+    Header,
+    Form,
+  },
+};
 </script>
 
 <style>
